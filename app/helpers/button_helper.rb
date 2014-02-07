@@ -52,7 +52,7 @@ module ButtonHelper
     button_with_icon text, link , 'check-circle', options
   end
 
-  def back_button(link, text = I18n.t('common.actions.back'), options = {})
+  def back_button(link, text = 'back', options = {})
     options.reverse_merge! :class => 'btn btn-default'
     button_with_icon text, link , 'arrow-left', options
   end

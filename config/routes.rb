@@ -1,14 +1,14 @@
 Lesson::Application.routes.draw do
-  root "pages#home"    
+  root "pages#home"
   get "home", to: "pages#home", as: "home"
-  get "inside", to: "pages#inside", as: "inside"
-  
-    
+
+
   devise_for :users
-  
+
   namespace :admin do
     root "base#index"
+    get "info", to: "base#info", as: "info"
     resources :users
   end
-  
+
 end

@@ -1,14 +1,10 @@
 %h1
   Admin
   %small Home
+%ul.list-group
+  %li.list-group-item= show_button admin_users_path, "Users"
+  %lii.list-group-item= show_button admin_info_path, "ENV info"
 .row
-  .col-sm-4
-    %h3 Menu
-    %h4
-      = link_to "Users", admin_users_path
-      %small
-        \- #{"#{@count} users"}
-    %hr/
   .col-sm-4
     %h3 Last Sign Ups
     %ul.list-unstyled
@@ -32,3 +28,4 @@
               ago
             - else
               never
+
