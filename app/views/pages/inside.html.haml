@@ -1,9 +1,15 @@
 %h1 Protected Page
-%p
-  This page is only visible to signed in users. Edit it at:
-  %em views/pages/inside
-%p
-  You can change the page users see after successfully signing in within the method
-  %em after_sign_in_path_for
-  inside
-  %strong application_controller.rb
+
+
+%h3 Info
+= "Ruby Version: #{RUBY_VERSION}"
+%br
+= "Rails Version: #{link_to Rails.version, 'https://github.com/rails/rails/tree/v'+Rails.version}".html_safe
+%br
+= "Rails.env: #{Rails.env}"
+%br
+= "Platform: #{RUBY_PLATFORM}"
+%h4 Environment
+-ENV.keys.each do |key |
+  = "ENV[#{key}] => #{ENV[key]}"
+  %br
