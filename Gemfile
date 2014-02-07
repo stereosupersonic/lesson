@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
+
 ruby '2.0.0'
+
 gem 'rails', '4.0.2'
-gem 'sass-rails', '~> 4.0.1'
 gem 'uglifier', '~> 2.4.0'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'jquery-rails', '~> 3.0.4'
@@ -9,24 +10,21 @@ gem 'turbolinks', '~> 2.1.0'
 gem 'jbuilder', '~> 1.5.3'
 gem 'bcrypt-ruby', '~> 3.1.2'
 
-group :doc do
-  gem 'sdoc', require: false
-end
+# Devise
+gem 'devise', '~> 3.2.2'
 
-# development gems
-group :development, :test do
-  gem 'sqlite3', '~> 1.3.8'    # dev & test database
-  gem 'figaro', '~> 0.7.0'     # env variables
-end
+gem 'will_paginate',         '~> 3.0'
+# GUI
+gem 'sass-rails', '~> 4.0.1'
+gem 'font-awesome-sass', '~> 4.0'
+gem 'bootstrap-sass', '~> 3.1'
+gem 'simple_form'
+gem 'haml-rails'
 
-# Paging
-gem 'kaminari', '~> 0.15.0'
+gem "exception_notification", "~> 4.0.1"
+gem 'capistrano'
+gem 'capistrano-ext'
 
-# Slugs and friendly id's
-gem 'friendly_id', '~> 5.0.2'
-
-# font-awesome
-gem 'font-awesome-sass', '~> 4.0.2'
 
 # production gems for heroku
 group :production do
@@ -34,25 +32,46 @@ group :production do
   gem 'rails_12factor'
 end
 
-
-# Devise
-gem 'devise', '~> 3.2.2'
-
-
-# Bootstrap 3
-group :development, :test do
-  gem 'rails_layout', '~> 0.5.11'  # Bootstrap 3 layout generator
+group :development do
+   gem 'thin'
+  #better debugging
+  #http://railscasts.com/episodes/402-better-errors-railspanel
+  gem "better_errors"               #https://github.com/charliesome/better_errors
+  gem 'binding_of_caller'
+  gem 'rack-mini-profiler'          #http://railscasts.com/episodes/368-miniprofiler
+  gem 'bullet'
 end
 
-gem 'bootstrap-sass', '~> 3.0.3.0'
+group :development, :test do
+  gem 'mysql2'
+  gem 'figaro', '~> 0.7.0'     # env variables
 
-
-# RSpec
-group :test, :development do
-  gem "rspec-rails", '~> 2.14.1'
+  gem 'rails_layout', '~> 0.5.11'  # Bootstrap 3 layout generator
+  gem "quiet_assets",               '>= 1.0.1' #Quiet assets turn off rails assets log.
+  gem 'g',                          :git => 'https://github.com/stereosupersonic/g'
+  gem 'rb-fsevent'
+  gem 'rspec-core',                 '~> 2.14'
+  gem 'rspec-rails',                '~> 2.14'
+  gem 'factory_girl_rails',         '~> 4.2.1'
+  gem 'growl'
+  gem 'ci_reporter'
+  gem 'spork'
+  gem 'annotate',                   '>=2.5.0.pre1', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-bundler'
+  gem 'guard-livereload'
+  gem 'guard-spork'
 end
 
 # Capybara
 group :test do
   gem "capybara", '~> 2.2.1'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'launchy'                     #for capybara save_and_open_page
+
+  gem 'simplecov'
+  gem "spork-rails"
+  gem 'fakeweb'
 end
