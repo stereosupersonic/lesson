@@ -45,18 +45,16 @@ end
 group :development, :test do
   gem 'mysql2'
   gem 'figaro', '~> 0.7.0'     # env variables
-
+  gem 'faker'
   gem 'rails_layout', '~> 0.5.11'  # Bootstrap 3 layout generator
   gem "quiet_assets",               '>= 1.0.1' #Quiet assets turn off rails assets log.
   gem 'g',                          :git => 'https://github.com/stereosupersonic/g'
-  gem 'rb-fsevent'
-  gem 'rspec-core',                 '~> 2.14'
-  gem 'rspec-rails',                '~> 2.14'
+  gem 'rspec-rails'
   gem 'factory_girl_rails',         '~> 4.2.1'
   gem 'growl'
   gem 'ci_reporter'
   gem 'spork'
-  gem 'annotate',                   '>=2.5.0.pre1', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'annotate',                    '>=2.6.0'
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-bundler'
@@ -66,12 +64,13 @@ end
 
 # Capybara
 group :test do
-  gem "capybara", '~> 2.2.1'
-  gem 'faker'
+  gem "capybara"
+  gem 'capybara-webkit'
+  gem "poltergeist"
   gem 'database_cleaner'
   gem 'launchy'                     #for capybara save_and_open_page
-
   gem 'simplecov'
+  gem 'shoulda-matchers'
   gem "spork-rails"
   gem 'fakeweb'
 end

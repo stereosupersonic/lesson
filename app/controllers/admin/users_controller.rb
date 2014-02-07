@@ -2,6 +2,7 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: [
     :show,
     :edit,
+    :show,
     :update,
     :destroy
   ]
@@ -14,47 +15,25 @@ class Admin::UsersController < Admin::BaseController
   def edit; end
 
   def update
-    old_username = @user.username
-    new_params = user_params.dup
-    new_params[:username] = new_params[:username].strip
-    new_params[:email] = new_params[:email].strip
-
-    @user.username = new_params[:username]
-    @user.email = new_params[:email]
-    @user.password = new_params[:password] if new_params[:password].strip.length > 0
-    @user.password_confirmation = new_params[:password_confirmation] if new_params[:password_confirmation].strip.length > 0
+    new_params = user_params
 
     if current_user.id != @user.id
       @user.admin = new_params[:admin]=="0" ? false : true
       @user.locked = new_params[:locked]=="0" ? false : true
     end
 
-    if @user.valid?
-      @user.skip_reconfirmation!
-      @user.save
+    if @user.update_attributes new_params
       redirect_to admin_users_path, notice: "#{@user.username} updated."
     else
-      flash[:alert] = "#{old_username} couldn't be updated."
       render :edit
     end
   end
 
   def create
-    @user = User.new
-    new_params = user_params.dup
-    new_params[:username] = new_params[:username].strip
-    new_params[:email] = new_params[:email].strip
-
-    @user.username = new_params[:username]
-    @user.email = new_params[:email]
-    @user.password = new_params[:password] if new_params[:password].strip.length > 0
-    @user.password_confirmation = new_params[:password_confirmation] if new_params[:password_confirmation].strip.length > 0
-
+    @user = User.new user_params
     if @user.save
-     # @user.skip_reconfirmation!
       redirect_to admin_users_path, notice: "#{@user.username} created."
     else
-       flash[:alert] = "Valdierungsfehler."
       render :new
     end
   end
@@ -65,12 +44,12 @@ class Admin::UsersController < Admin::BaseController
       redirect_to admin_users_path
     else
       @user.destroy
-      redirect_to admin_users_path, :error => 'User wurde gelöscht'
+      redirect_to admin_users_path, :notice => 'User wurde gelöscht'
     end
   end
 
   def new
-     @user = User.new
+    @user = User.new
   end
 
 

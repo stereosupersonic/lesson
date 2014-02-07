@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/ctran/annotate_models.git
-  revision: eb633bcf19c6a1242cb069e2e66829a9fa0021f1
-  specs:
-    annotate (2.6.1)
-      activerecord (>= 2.3.0)
-      rake (>= 0.8.7)
-
-GIT
   remote: https://github.com/stereosupersonic/g
   revision: f9897e1c8915fde4c51c530976646ff8667fd834
   specs:
@@ -41,6 +33,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
+    annotate (2.6.1)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arel (4.0.2)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -67,12 +62,16 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.1.0)
+      capybara (~> 2.0, >= 2.0.2)
+      json
     celluloid (0.15.2)
       timers (~> 1.1.0)
     childprocess (0.4.0)
       ffi (~> 1.0, >= 1.0.11)
     ci_reporter (1.9.1)
       builder (>= 2.1.2)
+    cliver (0.3.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -177,6 +176,11 @@ GEM
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    poltergeist (1.5.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     polyglot (0.3.3)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -234,6 +238,8 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    shoulda-matchers (2.5.0)
+      activesupport (>= 3.0.0)
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -284,6 +290,7 @@ GEM
     uniform_notifier (1.4.0)
     warden (1.2.3)
       rack (>= 1.0)
+    websocket-driver (0.3.2)
     will_paginate (3.0.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -292,7 +299,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate (>= 2.5.0.pre1)!
+  annotate (>= 2.6.0)
   bcrypt-ruby (~> 3.1.2)
   better_errors
   binding_of_caller
@@ -300,7 +307,8 @@ DEPENDENCIES
   bullet
   capistrano
   capistrano-ext
-  capybara (~> 2.2.1)
+  capybara
+  capybara-webkit
   ci_reporter
   coffee-rails (~> 4.0.1)
   database_cleaner
@@ -324,15 +332,15 @@ DEPENDENCIES
   launchy
   mysql2
   pg
+  poltergeist
   quiet_assets (>= 1.0.1)
   rack-mini-profiler
   rails (= 4.0.2)
   rails_12factor
   rails_layout (~> 0.5.11)
-  rb-fsevent
-  rspec-core (~> 2.14)
-  rspec-rails (~> 2.14)
+  rspec-rails
   sass-rails (~> 4.0.1)
+  shoulda-matchers
   simple_form
   simplecov
   spork
