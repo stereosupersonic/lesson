@@ -1,64 +1,15 @@
-inputs = %w[
-CollectionSelectInput
-FileInput
-GroupedCollectionSelectInput
-NumericInput
-PasswordInput
-RangeInput
-StringInput
-TextInput
-]
-
-inputs.each do |input_type|
-  superclass = "SimpleForm::Inputs::#{input_type}".constantize
-
-  new_class = Class.new(superclass) do
-    def input_html_classes
-      super.push('form-control')
-    end
-  end
-
-  Object.const_set(input_type, new_class)
-end
-
 SimpleForm.setup do |config|
 
-  config.wrappers :bootstrap, :tag => 'div', :class => 'form-group', :error_class => 'error field_with_errors' do |b|
+  config.wrappers :bootstrap, :tag => 'div', :class => 'form-group', :error_class => 'has-error' do |b|
     b.use :html5
     b.use :placeholder
-    b.use :label
-    b.wrapper :tag => 'div', :class => 'controls' do |ba|
-      ba.use :input
-      ba.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
-      ba.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
-    end
+    b.use :label, :wrap_with => { :tag => 'div',  :class => 'col-xs2 col-sm-2 col-md-2 col-lg-2 control-label text-right' }
+    b.use :input, :wrap_with => { :tag => 'div',  :class => 'col-xs-6 col-sm-6 col-md-6 col-lg-6 controls' }
+    b.use :error, :wrap_with => { :tag => 'span', :class => 'help-block' }
+    b.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block' }
   end
 
-  config.wrappers :prepend, :tag => 'div', :class => "control-group", :error_class => 'error' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.use :label
-    b.wrapper :tag => 'div', :class => 'controls' do |input|
-      input.wrapper :tag => 'div', :class => 'input-prepend' do |prepend|
-        prepend.use :input
-      end
-      input.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block' }
-      input.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
-    end
-  end
-
-  config.wrappers :append, :tag => 'div', :class => "control-group", :error_class => 'error' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.use :label
-    b.use :input
-    b.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
-    b.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
-  end
-
-  # Wrappers for forms and inputs using the Twitter Bootstrap toolkit.
-  # Check the Bootstrap docs (http://twitter.github.com/bootstrap)
-  # to learn about the different styles for forms and inputs,
-  # buttons and other elements.
+  config.form_class      = "form-horizontal"
+  config.input_class     = "form-control"
   config.default_wrapper = :bootstrap
 end
