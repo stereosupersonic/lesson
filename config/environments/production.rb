@@ -1,10 +1,3 @@
-Lesson::Application.config.middleware.use ExceptionNotification::Rack,
-  :email => {
-    :email_prefix => "[Lesson] ",
-    :sender_address => %{"notifier" <notifier@Lesson.com>},
-    :exception_recipients => %w{michael@deimel.de}
-  }
-
 Lesson::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
