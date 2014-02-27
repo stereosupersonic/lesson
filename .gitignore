@@ -30,3 +30,5 @@ doc/
 .secret
 
 notes.txt
+
+config/database.yml
