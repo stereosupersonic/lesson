@@ -33,6 +33,10 @@ describe User do
     it "should be valid" do
       build(:user).should be_valid
     end
+
+    it "should not be valid without username" do
+      build(:user).should  have(1).errors_on(:username)
+    end
   end
 
 end
