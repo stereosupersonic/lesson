@@ -35,7 +35,7 @@ describe User do
     end
 
     it "should not be valid without username" do
-      build(:user).should  have(1).errors_on(:username)
+      build(:user, :username => nil).should  have(1).errors_on(:username)
     end
   end
 
