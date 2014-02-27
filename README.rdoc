@@ -1,7 +1,6 @@
 {<img src="https://travis-ci.org/stereosupersonic/lesson.png?branch=master" alt="Build Status" />}[https://travis-ci.org/stereosupersonic/lesson]
-
 {<img src="https://codeclimate.com/github/stereosupersonic/lesson.png" />}[https://codeclimate.com/github/stereosupersonic/lesson]
-
+{<img src="https://coveralls.io/repos/stereosupersonic/lesson/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/stereosupersonic/lesson]
 == README
 
 This README would normally document whatever steps are necessary to get the

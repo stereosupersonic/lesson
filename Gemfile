@@ -73,4 +73,6 @@ group :test do
   gem 'shoulda-matchers'
   gem "spork-rails"
   gem 'fakeweb'
+
+  gem 'coveralls', :require => false
 end
