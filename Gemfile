@@ -26,6 +26,8 @@ gem 'capistrano'
 gem 'capistrano-ext'
 
 
+gem 'coveralls', :require => false
+
 # production gems for heroku
 group :production do
   gem 'pg'
@@ -33,7 +35,7 @@ group :production do
 end
 
 group :development do
-   gem 'thin'
+  gem 'thin'
   #better debugging
   #http://railscasts.com/episodes/402-better-errors-railspanel
   gem "better_errors"               #https://github.com/charliesome/better_errors
@@ -73,6 +75,4 @@ group :test do
   gem 'shoulda-matchers'
   gem "spork-rails"
   gem 'fakeweb'
-
-  gem 'coveralls', :require => false
 end
