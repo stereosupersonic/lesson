@@ -32,3 +32,5 @@ doc/
 notes.txt
 
 config/database.yml
+
+/coverage/

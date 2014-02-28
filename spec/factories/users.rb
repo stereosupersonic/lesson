@@ -28,7 +28,7 @@
 # This will guess the User class
 FactoryGirl.define do
   factory :user do
-    username  { Faker::Name.last_name }
+    username  { "MaxHere" }
     email     { Faker::Internet.email }
     password  { 1234 }
     password_confirmation { |r| r.password }

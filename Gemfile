@@ -25,7 +25,7 @@ gem "exception_notification", "~> 4.0.1"
 gem 'capistrano'
 gem 'capistrano-ext'
 
-
+# code coverage
 gem 'coveralls', :require => false
 
 # production gems for heroku
